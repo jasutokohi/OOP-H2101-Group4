@@ -101,18 +101,18 @@ public class Login extends javax.swing.JFrame {
     //Action made if Signin button is pressed
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-        String Username = txtUsername.getText();
-        String Pass = txtPass.getText();
+        String username = txtUsername.getText();
+        String pass = txtPass.getText();
 
         //Sends an error if Fields are empty
-        if (Username.trim().isEmpty() || Pass.trim().isEmpty()) {
+        if (username.trim().isEmpty() || pass.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Text Fields are not complete!", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         //Creates a hashmap for validation
         HashMap<String,String> users = new HashMap<>();
-        boolean result = MotorPHAccountsCSVUtil.verifyAuthentication(Username,Pass, users);
+        boolean result = MotorPHAccountsCSVUtil.verifyAuthentication(username,pass, users);
 
         //Sends an error message if Login credentials inserted doesn't have the same info saved inside the CSV
         if(result == false){
@@ -124,8 +124,8 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"Successful Login!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
 
         //Opens the next frame after logging in
-        EmployeeInformation EmpInfo = new EmployeeInformation();
-        EmpInfo.setVisible(true);
+        EmployeeInformation employeeInformation = new EmployeeInformation();
+        employeeInformation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSignInActionPerformed
 

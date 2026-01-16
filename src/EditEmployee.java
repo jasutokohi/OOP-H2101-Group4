@@ -1,6 +1,6 @@
 
 import CSVUtil.MotorPHEmployeeCSVUtil;
-import Class.Employee;
+import Model.Employee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class EditEmployee extends javax.swing.JFrame {
 
     private DefaultTableModel tableModel;
-    private List<Employee> Employees;
+    private List<Employee> employees;
     private final EmployeeInformation parentView;
     
     public EditEmployee(EmployeeInformation This) {
@@ -39,7 +39,7 @@ public class EditEmployee extends javax.swing.JFrame {
     
     
     private void loadEmpInfo(){
-        Employees = MotorPHEmployeeCSVUtil.LoadEmployeeInfo();
+        employees = MotorPHEmployeeCSVUtil.loadEmployeeInfo();
         String[] ColumnHeader = {"Employee ID", "Employee Position","Last Name", "First Name", "Gender", "Birthday", "Phone Number"};
         tableModel = new DefaultTableModel(ColumnHeader, 0){
             @Override
@@ -48,7 +48,7 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         };
         
-        for(Employee employee: Employees){
+        for(Employee employee: employees){
         String[] row = {
                     employee.getEmployeeID(),
                     employee.getPosition(),
@@ -109,7 +109,7 @@ public class EditEmployee extends javax.swing.JFrame {
                         JOptionPane.YES_NO_OPTION
                 );
                 if(confirm == JOptionPane.YES_OPTION){
-                    boolean deleted = MotorPHEmployeeCSVUtil.DeleteEmpInfo(EmployeeID);
+                    boolean deleted = MotorPHEmployeeCSVUtil.deleteEmpInfo(EmployeeID);
                     if(deleted){
                         tableModel.removeRow(selectedRow);
                         JOptionPane.showMessageDialog(EditEmployee.this,
@@ -318,8 +318,8 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        EmployeeInformation EI = new EmployeeInformation();
-        EI.setVisible(true);
+        EmployeeInformation employeeInformation = new EmployeeInformation();
+        employeeInformation.setVisible(true);
         dispose();
         
     }//GEN-LAST:event_formWindowClosing
@@ -328,22 +328,22 @@ public class EditEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
         
-        String EmployeeID = txtEmpID.getText();
-        String EmployeePosition = cboxPosition.getSelectedItem().toString();
-        String LastName = txtLastName.getText();
-        String FirstName = txtFirstName.getText();
-        String EmployeeGender = cboxGender.getSelectedItem().toString();
-        String Birthday = txtBirthday.getText();
-        String PhoneNumber = txtPhoneNumber.getText();
+        String employeeID = txtEmpID.getText();
+        String employeePosition = cboxPosition.getSelectedItem().toString();
+        String lastName = txtLastName.getText();
+        String firstName = txtFirstName.getText();
+        String employeeGender = cboxGender.getSelectedItem().toString();
+        String birthday = txtBirthday.getText();
+        String phoneNumber = txtPhoneNumber.getText();
         
-        if (EmployeeID.trim().isEmpty()||LastName.trim().isEmpty()&&FirstName.trim().isEmpty()||Birthday.trim().isEmpty()&&PhoneNumber.trim().isEmpty()){
+        if (employeeID.trim().isEmpty()||lastName.trim().isEmpty()&&firstName.trim().isEmpty()||birthday.trim().isEmpty()&&phoneNumber.trim().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please Enter values inside the Text Fields", "Missing Info", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        Employee updatedEmpInfo = new Employee(EmployeeID, EmployeePosition, LastName, FirstName, EmployeeGender, Birthday, PhoneNumber);
+        Employee updatedEmpInfo = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
         
-        boolean Success = MotorPHEmployeeCSVUtil.UpdateEmpInfo(updatedEmpInfo);
+        boolean success = MotorPHEmployeeCSVUtil.updateEmpInfo(updatedEmpInfo);
         
         int confirm = JOptionPane.showConfirmDialog(EditEmployee.this,
                         "Are you sure you want to Update?",
@@ -351,7 +351,7 @@ public class EditEmployee extends javax.swing.JFrame {
                         JOptionPane.YES_NO_OPTION
                 );
   
-        if (Success && confirm == JOptionPane.YES_OPTION){
+        if (success && confirm == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(this,"Employee information updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
             parentView.refreshTable();
             this.refreshTable();

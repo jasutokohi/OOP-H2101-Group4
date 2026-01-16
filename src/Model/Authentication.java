@@ -1,22 +1,22 @@
-package Class;
+package Model;
 
 public class Authentication {
-    private String Username;
-    private String Password;
+    private String username;
+    private String password;
     
     //Constructor for Authentication/login
     public Authentication(String Username, String Password){
-    this.Username = Username;
-    this.Password = Password;
+    this.username = Username;
+    this.password = Password;
     }
 
     //getter methods
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
     
 }

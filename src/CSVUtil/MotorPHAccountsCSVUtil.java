@@ -1,6 +1,6 @@
 package CSVUtil;
 
-import Class.Authentication;
+import Model.Authentication;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
@@ -20,7 +20,7 @@ public class MotorPHAccountsCSVUtil {
 
     
     //Saves Details of the employees
-    public static void SaveDetails(Authentication authentication) {
+    public static void saveDetails(Authentication authentication) {
         try {
             //Ensure folder exists
             File folder = new File("files");

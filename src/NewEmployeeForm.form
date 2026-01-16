@@ -120,7 +120,7 @@
                                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtEmpID" max="32767" attributes="0"/>
-                                          <Component id="CboxGender" max="32767" attributes="0"/>
+                                          <Component id="cboxGender" max="32767" attributes="0"/>
                                           <Component id="txtBirthday" alignment="0" pref="113" max="32767" attributes="0"/>
                                           <Component id="txtPhoneNumber" alignment="0" pref="113" max="32767" attributes="0"/>
                                       </Group>
@@ -137,7 +137,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtLastName" alignment="1" max="32767" attributes="0"/>
                                           <Component id="txtFirstName" max="32767" attributes="0"/>
-                                          <Component id="CboxPosition" max="32767" attributes="0"/>
+                                          <Component id="cboxPosition" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -166,7 +166,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="CboxPosition" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxPosition" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -181,7 +181,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="CboxGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxGender" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -242,7 +242,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFirstNameActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="CboxGender">
+            <Component class="javax.swing.JComboBox" name="cboxGender">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -290,7 +290,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="CboxPosition">
+            <Component class="javax.swing.JComboBox" name="cboxPosition">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">

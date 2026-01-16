@@ -1,5 +1,5 @@
 import CSVUtil.MotorPHEmployeeCSVUtil;
-import Class.Employee;
+import Model.Employee;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -27,10 +27,10 @@ public class NewEmployeeForm extends javax.swing.JFrame {
         txtEmpID = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
         txtFirstName = new javax.swing.JTextField();
-        CboxGender = new javax.swing.JComboBox<>();
+        cboxGender = new javax.swing.JComboBox<>();
         btnCreate = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        CboxPosition = new javax.swing.JComboBox<>();
+        cboxPosition = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtBirthday = new javax.swing.JTextField();
@@ -76,7 +76,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
             }
         });
 
-        CboxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
+        cboxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
 
         btnCreate.setBackground(new java.awt.Color(153, 255, 153));
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -98,7 +98,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
             }
         });
 
-        CboxPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "Finance", "IT", "Employee" }));
+        cboxPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "Finance", "IT", "Employee" }));
 
         jLabel7.setText("Position:");
 
@@ -139,7 +139,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
                                 .addGap(54, 54, 54)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmpID)
-                                    .addComponent(CboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboxGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -152,7 +152,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtFirstName)
-                                    .addComponent(CboxPosition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(cboxPosition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(40, 40, 40))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
@@ -172,7 +172,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
                     .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CboxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -184,7 +184,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CboxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,26 +245,26 @@ public class NewEmployeeForm extends javax.swing.JFrame {
         
         try{
         //gets values from text fields and combo boxes
-        String EmployeeID = txtEmpID.getText();
-        String EmployeePosition = CboxPosition.getSelectedItem().toString();
-        String LastName = txtLastName.getText();
-        String FirstName = txtFirstName.getText();
-        String EmployeeGender = CboxGender.getSelectedItem().toString();
-        String Birthday = txtBirthday.getText();
-        String PhoneNumber = txtPhoneNumber.getText();
+        String employeeID = txtEmpID.getText();
+        String employeePosition = cboxPosition.getSelectedItem().toString();
+        String lastName = txtLastName.getText();
+        String firstName = txtFirstName.getText();
+        String employeeGender = cboxGender.getSelectedItem().toString();
+        String birthday = txtBirthday.getText();
+        String phoneNumber = txtPhoneNumber.getText();
         
         
         //sends an error message if fields are empty
-        if (EmployeeID.trim().isEmpty()||LastName.trim().isEmpty()&&FirstName.trim().isEmpty()||Birthday.trim().isEmpty()&&PhoneNumber.trim().isEmpty()){
+        if (employeeID.trim().isEmpty()||lastName.trim().isEmpty()&&firstName.trim().isEmpty()||birthday.trim().isEmpty()&&phoneNumber.trim().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please Enter values inside the Text Fields", "Missing Info", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         //Constructor for employee, then is added to an array list for saving details
-        Employee employee = new Employee(EmployeeID, EmployeePosition, LastName, FirstName, EmployeeGender, Birthday, PhoneNumber);
-        Employees = new ArrayList<>();
-        Employees.add(employee);
-        MotorPHEmployeeCSVUtil.SaveDetails(employee);
+        Employee employee = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
+        employees = new ArrayList<>();
+        employees.add(employee);
+        MotorPHEmployeeCSVUtil.saveDetails(employee);
         
         
         //success message
@@ -272,10 +272,10 @@ public class NewEmployeeForm extends javax.swing.JFrame {
         
         //Makes the text fields into default
         txtEmpID.setText("");
-        CboxPosition.setSelectedItem("HR");
+        cboxPosition.setSelectedItem("HR");
         txtLastName.setText("");
         txtFirstName.setText("");
-        CboxGender.setSelectedItem("Male");
+        cboxGender.setSelectedItem("Male");
         txtBirthday.setText("");
         txtPhoneNumber.setText("");
         } catch(InputMismatchException e){
@@ -288,8 +288,8 @@ public class NewEmployeeForm extends javax.swing.JFrame {
 
     //Goes back to previous frame upon clicking
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        EmployeeInformation info = new EmployeeInformation();
-        info.setVisible(true);
+        EmployeeInformation employeeInformation = new EmployeeInformation();
+        employeeInformation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
@@ -299,8 +299,8 @@ public class NewEmployeeForm extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        EmployeeInformation info = new EmployeeInformation();
-        info.setVisible(true);
+        EmployeeInformation employeeInformation = new EmployeeInformation();
+        employeeInformation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
@@ -325,11 +325,11 @@ public class NewEmployeeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CboxGender;
-    private javax.swing.JComboBox<String> CboxPosition;
     private javax.swing.JComboBox<String> Gender1;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
+    private javax.swing.JComboBox<String> cboxGender;
+    private javax.swing.JComboBox<String> cboxPosition;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -347,5 +347,5 @@ public class NewEmployeeForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
-private List<Employee> Employees;
+private List<Employee> employees;
 }

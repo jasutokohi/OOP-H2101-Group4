@@ -1,4 +1,4 @@
-package Class;
+package Model;
 import java.text.DecimalFormat;
 
 class WithholdingTaxCalculator {

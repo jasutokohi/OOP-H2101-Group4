@@ -1,5 +1,5 @@
-import Class.PayrollCalculation;
-import Class.Employee;
+import Model.PayrollCalculation;
+import Model.Employee;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 
 public class ViewEmployee extends javax.swing.JFrame {
 
-    private final Employee OriginalEmpInfo;
+    private final Employee originalEmployeeInfo;
     private final EmployeeInformation parentView;
     LocalDate currentDate = LocalDate.now();
     int currentYear = currentDate.getYear();
     String CurrentYear = String.valueOf(currentYear);
         
     public ViewEmployee(Employee selectedEmployee, EmployeeInformation parent) {
-        this.OriginalEmpInfo = selectedEmployee;
+        this.originalEmployeeInfo = selectedEmployee;
         this.parentView = parent;
         initComponents();
         
@@ -193,21 +193,21 @@ public class ViewEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
         //gets text fields information and month
-        int BasicSalary = Integer.parseInt(txtBasicSalary.getText());
-        int DaysWorked = Integer.parseInt(txtDaysWorked.getText());
-        int OvertimeHours = Integer.parseInt(txtOvertimeHours.getText());
-        String Months = cmbMonths.getSelectedItem().toString();
+        int basicSalary = Integer.parseInt(txtBasicSalary.getText());
+        int daysWorked = Integer.parseInt(txtDaysWorked.getText());
+        int overtimeHours = Integer.parseInt(txtOvertimeHours.getText());
+        String months = cmbMonths.getSelectedItem().toString();
         
         //Sends information to constructor to access the methods for calculation
-        var Calculate = new PayrollCalculation(BasicSalary, DaysWorked, OvertimeHours);
+        var Calculate = new PayrollCalculation(basicSalary, daysWorked, overtimeHours);
         
         //Sets the Information for calculated fields
         txtPayslip.setText("Payslip\n"
-                            + "Pay Period: " + Months + " " + CurrentYear + "\n"
+                            + "Pay Period: " + months + " " + CurrentYear + "\n"
                             + Calculate.showEarnings() + "\n"
-                            + Calculate.ShowBenefits() + "\n"
+                            + Calculate.showBenefits() + "\n"
                             + Calculate.showDeductions() + "\n"
-                            + Calculate.Summary() + "\n");
+                            + Calculate.summary() + "\n");
         } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, 
         "Please enter NUMBERS ONLY in the salary, days worked, and overtime fields.", 
@@ -218,16 +218,16 @@ public class ViewEmployee extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        EmployeeInformation info = new EmployeeInformation();
-        info.setVisible(true);
+        EmployeeInformation employeeinformation = new EmployeeInformation();
+        employeeinformation.setVisible(true);
 
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        EmployeeInformation EmpInfo = new EmployeeInformation();
-        EmpInfo.setVisible(true);
+        EmployeeInformation employeeinformation = new EmployeeInformation();
+        employeeinformation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 

@@ -1,6 +1,6 @@
  
 import CSVUtil.MotorPHEmployeeCSVUtil;
-import Class.Employee;
+import Model.Employee;
 import java.awt.event.ActionEvent;
 import java.util.Hashtable;
 import java.util.List;
@@ -17,7 +17,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
      */
     
     private DefaultTableModel tableModel; //Variable Declaration ng DefaultTableModel
-    private List<Employee> Employees; //Varibale Declaration ng Employees which is a list
+    private List<Employee> employees; //Varibale Declaration ng Employees which is a list
 
     
     public EmployeeInformation() {
@@ -60,7 +60,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
     
     //Method that Displays all the information to table
     private void loadEmpInfo(){
-        Employees = MotorPHEmployeeCSVUtil.LoadEmployeeInfo();
+        employees = MotorPHEmployeeCSVUtil.loadEmployeeInfo();
         String[] ColumnHeader = {"Employee ID", "Employee Position","Last Name", "First Name", "Gender", "Birthday", "Phone Number"};
         tableModel = new DefaultTableModel(ColumnHeader, 0){
             @Override
@@ -69,7 +69,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
             }
         };
         
-        for(Employee employee: Employees){
+        for(Employee employee: employees){
         String[] row = {
                     employee.getEmployeeID(),
                     employee.getPosition(),
@@ -102,8 +102,8 @@ public class EmployeeInformation extends javax.swing.JFrame {
         btnView.addActionListener((ActionEvent e) -> {
             int selectedRow = tblEmpInfo.getSelectedRow();
             if(selectedRow != -1){
-                String EmployeeID = tableModel.getValueAt(selectedRow, 0).toString();
-                Employee selectedEmployee = MotorPHEmployeeCSVUtil.getEmployeeByID(EmployeeID);
+                String employeeID = tableModel.getValueAt(selectedRow, 0).toString();
+                Employee selectedEmployee = MotorPHEmployeeCSVUtil.getEmployeeByID(employeeID);
                 
                 if(selectedEmployee != null){
                     ViewEmployee view = new ViewEmployee(selectedEmployee, EmployeeInformation.this);
@@ -244,8 +244,8 @@ public class EmployeeInformation extends javax.swing.JFrame {
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
-        NewEmployeeForm NEF = new NewEmployeeForm();
-        NEF.setVisible(true);
+        NewEmployeeForm newEmployeeForm = new NewEmployeeForm();
+        newEmployeeForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnNewActionPerformed
 
