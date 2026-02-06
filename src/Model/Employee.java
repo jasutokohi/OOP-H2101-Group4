@@ -8,14 +8,20 @@ public class Employee{
     private String lastName;
     private String firstName;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private String position;
     private String phoneNumber;
 =======
+=======
+>>>>>>> Stashed changes
     private String status;
     private String position;
     private String immediateSupervisor;
     private int basicSalary;
     private double hourlyRate;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     
     //Constructors
@@ -41,6 +47,9 @@ public class Employee{
         this.immediateSupervisor = immediateSupervisor;
         this.basicSalary = basicSalary;
         this.hourlyRate = hourlyRate;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
     
@@ -77,6 +86,7 @@ public class Employee{
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public String getBirthday() {
         return birthday;
     }
@@ -86,6 +96,8 @@ public class Employee{
     }
 
 =======
+=======
+>>>>>>> Stashed changes
     public String getStatus() {
         return status;
     }
@@ -100,6 +112,16 @@ public class Employee{
     }
 <<<<<<< Updated upstream
 =======
+    
+    @Override
+    public int getBasicSalary(){
+       return basicSalary; 
+    }
+
+    @Override
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
     
     @Override
     public int getBasicSalary(){
@@ -149,5 +171,8 @@ public class Employee{
     @Override
     public abstract String toString();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
