@@ -5,7 +5,6 @@ public abstract class Employee implements EmployeeOperations{
     private String lastName;
     private String firstName;
     private String position;
-    private String phoneNumber;
     private String status;
     private String immediateSupervisor;
     private int basicSalary;
@@ -46,10 +45,6 @@ public abstract class Employee implements EmployeeOperations{
 
     public String getPosition() {
         return position;
-    }
-
-    public String getPhoneNumber(){
-        return phoneNumber;
     }
 
     
