@@ -5,9 +5,14 @@ class WithholdingTaxCalculator {
     
     private static final DecimalFormat decfor = new DecimalFormat("0.00");
 
+<<<<<<< Updated upstream:src/Model/WithholdingTaxCalculator.java
     public double calculateWithholdingTax(double basicSalary, double totalDeductions) {
         double taxableIncome = basicSalary - totalDeductions;
         double withholdingTax = 0;
+=======
+    public double calculateWithholdingTax(double taxableIncome) {
+        double withholdingTax;
+>>>>>>> Stashed changes:src/Model/calculateWithholdingTax.java
 
         if (basicSalary >= 20833 && basicSalary < 33333) {
             withholdingTax = (taxableIncome - 20833) * 0.20;

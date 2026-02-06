@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/Authentication.java</file>
             <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/Employee.java</file>
             <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/PayrollCalculation.java</file>
             <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/WithholdingTaxCalculator.java</file>
+=======
+            <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Login.java</file>
+            <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/Payroll.java</file>
+            <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/Benefits.java</file>
+            <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/CalculateBenefits.java</file>
+            <file>file:/C:/Users/Juztin/Documents/GitHub/OOP1/src/Model/Payslip.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
