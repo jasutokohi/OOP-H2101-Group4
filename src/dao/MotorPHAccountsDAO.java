@@ -1,4 +1,4 @@
-package CSVUtil;
+package dao;
 
 import Model.Authentication;
 import com.opencsv.CSVReader;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MotorPHAccountsCSVUtil {
+public class MotorPHAccountsDAO {
     private static final String FILE_PATH = "files/AuthenticationDetails.csv";
     private static final String[] HEADERS = {"Username", "Password"};
 

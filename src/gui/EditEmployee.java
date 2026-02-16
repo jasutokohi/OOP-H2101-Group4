@@ -1,5 +1,6 @@
+package gui;
 
-import CSVUtil.MotorPHEmployeeCSVUtil;
+import dao.MotorPHEmployeeDAO;
 import Model.Employee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,14 +16,14 @@ public class EditEmployee extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
     private List<Employee> employees;
     private final EmployeeInformation parentView;
-    
+
     public EditEmployee(EmployeeInformation This) {
         this.parentView = This;
         initComponents();
         loadEmpInfo();
         addTableSelectionListener();
 //        PopulateFields();
-        
+
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
         txtEmpID.setEnabled(false);
@@ -32,43 +33,40 @@ public class EditEmployee extends javax.swing.JFrame {
         cboxGender.setEnabled(false);
         txtBirthday.setEnabled(false);
         txtPhoneNumber.setEnabled(false);
-        
-        
+
     }
 
-    
-    
-    private void loadEmpInfo(){
-        employees = MotorPHEmployeeCSVUtil.loadEmployeeInfo();
-        String[] ColumnHeader = {"Employee ID", "Employee Position","Last Name", "First Name", "Gender", "Birthday", "Phone Number"};
-        tableModel = new DefaultTableModel(ColumnHeader, 0){
+    private void loadEmpInfo() {
+        employees = MotorPHEmployeeDAO.loadEmployeeInfo();
+        String[] ColumnHeader = {"Employee ID", "Employee Position", "Last Name", "First Name", "Gender", "Birthday", "Phone Number"};
+        tableModel = new DefaultTableModel(ColumnHeader, 0) {
             @Override
-            public boolean isCellEditable(int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        
-        for(Employee employee: employees){
-        String[] row = {
-                    employee.getEmployeeID(),
-                    employee.getPosition(),
-                    employee.getLastName(),
-                    employee.getFirstName(),
-                    employee.getGender(),
-                    employee.getBirthday(),
-                    employee.getPhoneNumber()
-                    };
-                    tableModel.addRow(row);
+
+        for (Employee employee : employees) {
+            String[] row = {
+                employee.getEmployeeID(),
+                employee.getPosition(),
+                employee.getLastName(),
+                employee.getFirstName(),
+                employee.getGender(),
+                employee.getBirthday(),
+                employee.getPhoneNumber()
+            };
+            tableModel.addRow(row);
         }
-        
+
         tblEmpInfo.setModel(tableModel);
     }
-    
-    public void refreshTable(){
+
+    public void refreshTable() {
         loadEmpInfo();
     }
-    
-    private void addTableSelectionListener(){
+
+    private void addTableSelectionListener() {
         tblEmpInfo.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
             boolean selected = tblEmpInfo.getSelectedRow() != -1;
             btnDelete.setEnabled(selected);
@@ -80,12 +78,12 @@ public class EditEmployee extends javax.swing.JFrame {
             cboxGender.setEnabled(selected);
             txtBirthday.setEnabled(selected);
             txtPhoneNumber.setEnabled(selected);
-            
+
             int selectedRow = tblEmpInfo.getSelectedRow();
 
             if (selectedRow != -1) {
                 String EmployeeID = tableModel.getValueAt(selectedRow, 0).toString();
-                Employee selectedEmployee = MotorPHEmployeeCSVUtil.getEmployeeByID(EmployeeID);
+                Employee selectedEmployee = MotorPHEmployeeDAO.getEmployeeByID(EmployeeID);
 
                 txtEmpID.setText(EmployeeID);
                 cboxPosition.setSelectedItem(selectedEmployee.getPosition());
@@ -96,26 +94,24 @@ public class EditEmployee extends javax.swing.JFrame {
                 txtPhoneNumber.setText(selectedEmployee.getPhoneNumber());
             }
         });
-        
 
-        
         btnDelete.addActionListener((ActionEvent e) -> {
             int selectedRow = tblEmpInfo.getSelectedRow();
-            if(selectedRow != -1){
+            if (selectedRow != -1) {
                 String EmployeeID = tableModel.getValueAt(selectedRow, 0).toString();
                 int confirm = JOptionPane.showConfirmDialog(EditEmployee.this,
                         "Are you sure you want to delete this Employee Information?",
                         "Confirm Delete",
                         JOptionPane.YES_NO_OPTION
                 );
-                if(confirm == JOptionPane.YES_OPTION){
-                    boolean deleted = MotorPHEmployeeCSVUtil.deleteEmpInfo(EmployeeID);
-                    if(deleted){
+                if (confirm == JOptionPane.YES_OPTION) {
+                    boolean deleted = MotorPHEmployeeDAO.deleteEmpInfo(EmployeeID);
+                    if (deleted) {
                         tableModel.removeRow(selectedRow);
                         JOptionPane.showMessageDialog(EditEmployee.this,
                                 "Employee Record deleted successfully!"
                         );
-                    } else{
+                    } else {
                         JOptionPane.showMessageDialog(EditEmployee.this,
                                 "Failed to Delete record.",
                                 "Error!",
@@ -126,7 +122,7 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         });
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -321,51 +317,51 @@ public class EditEmployee extends javax.swing.JFrame {
         EmployeeInformation employeeInformation = new EmployeeInformation();
         employeeInformation.setVisible(true);
         dispose();
-        
+
     }//GEN-LAST:event_formWindowClosing
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        try{
-        
-        String employeeID = txtEmpID.getText();
-        String employeePosition = cboxPosition.getSelectedItem().toString();
-        String lastName = txtLastName.getText();
-        String firstName = txtFirstName.getText();
-        String employeeGender = cboxGender.getSelectedItem().toString();
-        String birthday = txtBirthday.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        
-        if (employeeID.trim().isEmpty()||lastName.trim().isEmpty()&&firstName.trim().isEmpty()||birthday.trim().isEmpty()&&phoneNumber.trim().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please Enter values inside the Text Fields", "Missing Info", JOptionPane.WARNING_MESSAGE);
-            return;
+        try {
+
+            String employeeID = txtEmpID.getText();
+            String employeePosition = cboxPosition.getSelectedItem().toString();
+            String lastName = txtLastName.getText();
+            String firstName = txtFirstName.getText();
+            String employeeGender = cboxGender.getSelectedItem().toString();
+            String birthday = txtBirthday.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+
+            if (employeeID.trim().isEmpty() || lastName.trim().isEmpty() && firstName.trim().isEmpty() || birthday.trim().isEmpty() && phoneNumber.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Enter values inside the Text Fields", "Missing Info", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Employee updatedEmpInfo = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
+
+            boolean success = MotorPHEmployeeDAO.updateEmpInfo(updatedEmpInfo);
+
+            int confirm = JOptionPane.showConfirmDialog(EditEmployee.this,
+                    "Are you sure you want to Update?",
+                    "Confirm Logout",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (success && confirm == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(this, "Employee information updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                parentView.refreshTable();
+                this.refreshTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update Employee Information", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (InputMismatchException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter STRING ONLY in the text fields.",
+                    "INPUT ERROR!",
+                    JOptionPane.WARNING_MESSAGE);
         }
-        
-        Employee updatedEmpInfo = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
-        
-        boolean success = MotorPHEmployeeCSVUtil.updateEmpInfo(updatedEmpInfo);
-        
-        int confirm = JOptionPane.showConfirmDialog(EditEmployee.this,
-                        "Are you sure you want to Update?",
-                        "Confirm Logout",
-                        JOptionPane.YES_NO_OPTION
-                );
-  
-        if (success && confirm == JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(this,"Employee information updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            parentView.refreshTable();
-            this.refreshTable();
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to update Employee Information", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-        
-        } catch(InputMismatchException e){
-            JOptionPane.showMessageDialog(this, 
-            "Please enter STRING ONLY in the text fields.", 
-            "INPUT ERROR!", 
-            JOptionPane.WARNING_MESSAGE);
-        }  
-    
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -1,5 +1,8 @@
+package gui;
+
  
-import CSVUtil.MotorPHEmployeeCSVUtil;
+import gui.EditEmployee;
+import dao.MotorPHEmployeeDAO;
 import Model.Employee;
 import java.awt.event.ActionEvent;
 import java.util.Hashtable;
@@ -30,7 +33,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
     }
     
     private void loadSelectedEmpInfo() {
-    Hashtable<String, String[]> employeeMap = MotorPHEmployeeCSVUtil.loadSelectedEmployeeInfo();
+    Hashtable<String, String[]> employeeMap = MotorPHEmployeeDAO.loadSelectedEmployeeInfo();
 
     String[] columnHeader = { "Employee ID", "Employee Position", "Last Name", "First Name", "Gender" };
     tableModel = new DefaultTableModel(columnHeader, 0) {
@@ -60,7 +63,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
     
     //Method that Displays all the information to table
     private void loadEmpInfo(){
-        employees = MotorPHEmployeeCSVUtil.loadEmployeeInfo();
+        employees = MotorPHEmployeeDAO.loadEmployeeInfo();
         String[] ColumnHeader = {"Employee ID", "Employee Position","Last Name", "First Name", "Gender", "Birthday", "Phone Number"};
         tableModel = new DefaultTableModel(ColumnHeader, 0){
             @Override
@@ -103,7 +106,7 @@ public class EmployeeInformation extends javax.swing.JFrame {
             int selectedRow = tblEmpInfo.getSelectedRow();
             if(selectedRow != -1){
                 String employeeID = tableModel.getValueAt(selectedRow, 0).toString();
-                Employee selectedEmployee = MotorPHEmployeeCSVUtil.getEmployeeByID(employeeID);
+                Employee selectedEmployee = MotorPHEmployeeDAO.getEmployeeByID(employeeID);
                 
                 if(selectedEmployee != null){
                     ViewEmployee view = new ViewEmployee(selectedEmployee, EmployeeInformation.this);

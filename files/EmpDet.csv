@@ -1,5 +1,35 @@
-"Employee ID","Employee Position","Last Name","First Name","Gender","Birthday","Phone Number"
-"10001","HR","Villanueva","Andrea Mae","Female","02/14/1988","09186216032"
-"10002","Finance","Salcedo","Anthony","Male","09/14/1993","090707663001"
-"10003","IT","Hernandez","Eduard","Male","09/23/1989","09088860121"
-"10004","Employee","Santos","Beatriz","Female","08/07/1990","095266395111"
+Employee #,Last Name,First Name,Status,Immediate Supervisor,Position,Basic Salary,Rice Subsidy,Phone Allowance,Clothing Allowance,Hourly Rate
+10001,Garcia,Manuel III,Regular,N/A,Chief Executive Officer,"90,000","1,500","2,000","1,000",535.71
+10002,Lim,Antonio,Regular,"Garcia, Manuel III",Chief Operating Officer,"60,000","1,500","2,000","1,000",357.14
+10003,Aquino,Bianca Sofia,Regular,"Garcia, Manuel III",Chief Finance Officer,"60,000","1,500","2,000","1,000",357.14
+10004,Reyes,Isabella,Regular,"Garcia, Manuel III",Chief Marketing Officer,"60,000","1,500","2,000","1,000",357.14
+10005,Hernandez,Eduard,Regular,"Lim, Antonio",IT Operations and Systems,"52,670","1,500","1,000","1,000",313.51
+10006,Villanueva,Andrea Mae,Regular,"Lim, Antonio",HR Manager,"52,670","1,500","1,000","1,000",313.51
+10010,Alvaro,Roderick,Regular,"Aquino, Bianca Sofia ",Accounting Head,"52,670","1,500","1,000","1,000",313.51
+10011,Salcedo,Anthony,Regular,"Alvaro, Roderick",Payroll Manager,"50,825","1,500","1,000","1,000",302.53
+10015,Romualdez,Fredrick ,Regular,"Lim, Antonio",Account Manager,"53,500","1,500","1,000","1,000",318.45
+10032,Castro,John Rafael,Regular,"Reyes, Isabella",Sales & Marketing,"52,670","1,500","1,000","1,000",313.51
+10033,Martinez,Carlos Ian,Regular,"Reyes, Isabella",Supply Chain and Logistics,"52,670","1,500","1,000","1,000",313.51
+10034,Santos,Beatriz,Regular,"Reyes, Isabella",Customer Service and Relations,"52,670","1,500","1,000","1,000",313.51
+10007,San Jose,Brad ,Regular,"Villanueva, Andrea Mae",HR Team Leader,"42,975","1,500",800,800,255.80
+10012,Lopez,Josie ,Regular,"Salcedo, Anthony",Payroll Team Leader,"38,475","1,500",800,800,229.02
+10016,Mata,Christian,Regular,"Romualdez, Fredrick ",Account Team Leader,"42,975","1,500",800,800,255.80
+10017,De Leon,Selena ,Regular,"Romualdez, Fredrick ",Account Team Leader,"41,850","1,500",800,800,249.11
+10008,Romualdez,Alice,Regular,"San, Jose Brad",HR Rank and File,"22,500","1,500",500,500,133.93
+10009,Atienza,Rosie ,Regular,"San, Jose Brad",HR Rank and File,"22,500","1,500",500,500,133.93
+10013,Farala,Martha,Regular,"Salcedo, Anthony",Payroll Rank and File,"24,000","1,500",500,500,142.86
+10014,Martinez,Leila,Regular,"Salcedo, Anthony",Payroll Rank and File,"24,000","1,500",500,500,142.86
+10018,San Jose,Allison ,Regular,"Mata, Christian",Account Rank and File,"22,500","1,500",500,500,133.93
+10019,Rosario,Cydney ,Regular,"Mata, Christian",Account Rank and File,"22,500","1,500",500,500,133.93
+10020,Bautista,Mark ,Regular,"Mata, Christian",Account Rank and File,"23,250","1,500",500,500,138.39
+10021,Lazaro,Darlene ,Probationary,"Mata, Christian",Account Rank and File,"23,250","1,500",500,500,138.39
+10022,Delos Santos,Kolby ,Probationary,"Mata, Christian",Account Rank and File,"24,000","1,500",500,500,142.86
+10023,Santos,Vella ,Probationary,"Mata, Christian",Account Rank and File,"22,500","1,500",500,500,133.93
+10024,Del Rosario,Tomas,Probationary,"Mata, Christian",Account Rank and File,"22,500","1,500",500,500,133.93
+10025,Tolentino,Jacklyn ,Probationary,"De Leon, Selena",Account Rank and File,"24,000","1,500",500,500,142.86
+10026,Gutierrez,Percival ,Probationary,"De Leon, Selena",Account Rank and File,"24,750","1,500",500,500,147.32
+10027,Manalaysay,Garfield ,Probationary,"De Leon, Selena",Account Rank and File,"24,750","1,500",500,500,147.32
+10028,Villegas,Lizeth ,Probationary,"De Leon, Selena",Account Rank and File,"24,000","1,500",500,500,142.86
+10029,Ramos,Carol ,Probationary,"De Leon, Selena",Account Rank and File,"22,500","1,500",500,500,133.93
+10030,Maceda,Emelia ,Probationary,"De Leon, Selena",Account Rank and File,"22,500","1,500",500,500,133.93
+10031,Aguilar,Delia ,Probationary,"De Leon, Selena",Account Rank and File,"22,500","1,500",500,500,133.93

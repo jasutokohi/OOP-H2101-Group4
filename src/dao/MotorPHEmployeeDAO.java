@@ -1,4 +1,4 @@
-package CSVUtil;
+package dao;
 
 import Model.Employee;
 import com.opencsv.CSVReader;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 
-public class MotorPHEmployeeCSVUtil {
+public class MotorPHEmployeeDAO {
     
     private static final String FILE_PATH = "files/EmpDet.csv";
     private static final String[] HEADERS = {"Employee ID","Employee Position","Last Name","First Name","Gender", "Birthday", "Phone Number"};
@@ -49,13 +49,17 @@ public class MotorPHEmployeeCSVUtil {
                 
                 //Structure of the employee details to be saved to CSVFile
                 String[] row = {
-                    employee.getEmployeeID(),
-                    employee.getPosition(),
+                    String.valueOf(employee.getEmployeeID()),
                     employee.getLastName(),
                     employee.getFirstName(),
-                    employee.getGender(),
-                    employee.getBirthday(),
-                    employee.getPhoneNumber()
+                    employee.getStatus(),
+                    employee.getImmediateSupervisor(),
+                    employee.getPosition(),
+                    String.valueOf(employee.getBasicSalary()),      
+                    String.valueOf(employee.getRiceSubsidy()),     
+                    String.valueOf(employee.getPhoneAllowance()),   
+                    String.valueOf(employee.getClothingAllowance()),
+                    String.valueOf(employee.getHourlyRate()) 
                 };
                 
                 writer.writeNext(row);
@@ -74,12 +78,14 @@ public class MotorPHEmployeeCSVUtil {
     Hashtable<String, String[]> employeeMap = new Hashtable<>();
 
     for (Employee emp : employees) {
-        String employeeID = emp.getEmployeeID(); // assuming you have getter methods
+        String employeeID = String.valueOf(emp.getEmployeeID()); // assuming you have getter methods
         String[] partialData = new String[] {
             emp.getPosition(),
             emp.getLastName(),
             emp.getFirstName(),
-            emp.getGender()
+            emp.getStatus(),
+            emp.getImmediateSupervisor(),
+            emp.getPosition()
         };
         employeeMap.put(employeeID, partialData);
     }
@@ -113,16 +119,20 @@ public class MotorPHEmployeeCSVUtil {
                 //Skip header row then parse remaining rows
                 for(int i = 1; i < rows.size(); i++){
                     String[] row = rows.get(i);
-                    if(row.length >= 7){
-                    String employeeID = row[0];
-                    String employeePosition = row[1];
-                    String lastName = row[2];
-                    String firstName = row[3];
-                    String employeeGender = row[4];
-                    String birthday = row[5];
-                    String phoneNumber = row[6];
+                    if(row.length >= 11){
+                        int employeeID = Integer.parseInt(row[0]);
+                        String lastName = row[1];
+                        String firstName = row[2];
+                        String status = row[3];
+                        String immediateSupervisor = row[4];
+                        String position = row[5];
+                        int basicSalary = Integer.parseInt(row[6]);
+                        int riceSubsidy = Integer.parseInt(row[7]);
+                        int phoneAllowance = Integer.parseInt(row[8]);
+                        int clothingAllowance = Integer.parseInt(row[9]);
+                        double hourlyRate = Double.parseDouble(row[10]);
                                                           
-                    Employee employee  = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
+                    Employee employee  = new Employee(employeeID, lastName, firstName, status, immediateSupervisor, position, basicSalary, riceSubsidy, phoneAllowance, clothingAllowance, hourlyRate);
                     employeeList.add(employee);
                     }
                 }
@@ -250,13 +260,17 @@ public class MotorPHEmployeeCSVUtil {
             String[] row = allRows.get(i);
             if(row[0].equals(UpdatedEmployee.getEmployeeID())){
                 String[] newRow = {
-                    UpdatedEmployee.getEmployeeID(),
-                    UpdatedEmployee.getPosition(),
+                    String.valueOf(UpdatedEmployee.getEmployeeID()),
                     UpdatedEmployee.getLastName(),
                     UpdatedEmployee.getFirstName(),
-                    UpdatedEmployee.getGender(),
-                    UpdatedEmployee.getBirthday(),
-                    UpdatedEmployee.getPhoneNumber()
+                    UpdatedEmployee.getStatus(),
+                    UpdatedEmployee.getImmediateSupervisor(),
+                    UpdatedEmployee.getPosition(),
+                    String.valueOf(UpdatedEmployee.getBasicSalary()),      
+                    String.valueOf(UpdatedEmployee.getRiceSubsidy()),     
+                    String.valueOf(UpdatedEmployee.getPhoneAllowance()),   
+                    String.valueOf(UpdatedEmployee.getClothingAllowance()),
+                    String.valueOf(UpdatedEmployee.getHourlyRate()) 
                 };
                 UpdatedRows.add(newRow);
                 Updated = true;
@@ -279,10 +293,10 @@ public class MotorPHEmployeeCSVUtil {
 
     
     //Method that gets Employee Information by ID
-    public static Employee getEmployeeByID(String EmployeeID) {
+    public static Employee getEmployeeByID(int EmployeeID) {
         List<Employee> employees = loadEmployeeInfo();
         for(Employee employee : employees){
-            if(employee.getEmployeeID().equals(EmployeeID)){
+            if(employee.getEmployeeID() == (EmployeeID)){
                 return employee;
                 }
         }

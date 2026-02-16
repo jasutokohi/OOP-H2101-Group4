@@ -1,5 +1,7 @@
+package gui;
 
-import CSVUtil.MotorPHAccountsCSVUtil;
+
+import dao.MotorPHAccountsDAO;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 
@@ -112,7 +114,7 @@ public class Login extends javax.swing.JFrame {
 
         //Creates a hashmap for validation
         HashMap<String,String> users = new HashMap<>();
-        boolean result = MotorPHAccountsCSVUtil.verifyAuthentication(username,pass, users);
+        boolean result = MotorPHAccountsDAO.verifyAuthentication(username,pass, users);
 
         //Sends an error message if Login credentials inserted doesn't have the same info saved inside the CSV
         if(result == false){

@@ -1,4 +1,6 @@
-import CSVUtil.MotorPHEmployeeCSVUtil;
+package gui;
+
+import dao.MotorPHEmployeeDAO;
 import Model.Employee;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -264,7 +266,7 @@ public class NewEmployeeForm extends javax.swing.JFrame {
         Employee employee = new Employee(employeeID, employeePosition, lastName, firstName, employeeGender, birthday, phoneNumber);
         employees = new ArrayList<>();
         employees.add(employee);
-        MotorPHEmployeeCSVUtil.saveDetails(employee);
+        MotorPHEmployeeDAO.saveDetails(employee);
         
         
         //success message
