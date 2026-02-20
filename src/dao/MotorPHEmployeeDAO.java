@@ -18,7 +18,7 @@ public class MotorPHEmployeeDAO {
     private static final String FILE_PATH = "files/EmpDet.csv";
     private static final String[] HEADERS = {"Employee ID","Employee Position","Last Name","First Name","Gender", "Birthday", "Phone Number"};
     
-    //Saves Details of the employees
+    //Saves Details of the employees comment
     public static void saveDetails(Employee employee){
         try{
             //Ensure folder exists
